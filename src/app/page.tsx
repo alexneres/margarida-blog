@@ -1,6 +1,7 @@
 import { client } from '@/lib/sanity.client'
 import Link from 'next/link'
 import { TypedObject } from 'sanity'
+export const revalidate = 30
 
 export type PostType = {
   title: string

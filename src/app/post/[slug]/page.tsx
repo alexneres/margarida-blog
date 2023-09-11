@@ -3,6 +3,7 @@ import { urlFor } from '@/lib/sanity-image-url'
 import { client } from '@/lib/sanity.client'
 import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
+export const revalidate = 30
 
 async function getPost(slug: string) {
   const query = `*[_type == "post" && slug.current == '${slug}'][0]`
