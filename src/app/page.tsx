@@ -3,6 +3,8 @@ import { getPosts } from '@/services/sanity'
 import Link from 'next/link'
 import { TypedObject } from 'sanity'
 
+export const revalidate = 0
+
 export type PostType = {
   title: string
   overview: string
