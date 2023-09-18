@@ -1,11 +1,12 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { Header, Footer } from '@/components/Layout'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Oh My Next',
+  title: 'Margarida Blog',
   description: '',
 }
 
@@ -16,7 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header className="absolute flex w-full items-center justify-center" />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }

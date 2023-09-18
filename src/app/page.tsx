@@ -1,7 +1,7 @@
-import { client } from '@/lib/sanity.client'
+import Container from '@/components/Shared/Container'
+import { getPosts } from '@/services/sanity'
 import Link from 'next/link'
 import { TypedObject } from 'sanity'
-export const revalidate = 30
 
 export type PostType = {
   title: string
@@ -14,31 +14,26 @@ export type PostType = {
   _createdAt: string
 }
 
-async function getPosts() {
-  const query = '*[_type == "post"]'
-
-  const posts = await client.fetch(query)
-
-  return posts
-}
-
 export default async function Home() {
   const posts = (await getPosts()) as PostType[]
+  console.log(posts)
   return (
-    <main>
-      {posts.map((post) => (
-        <li key={post._id}>
-          <article>
-            <Link href={`/post/${post.slug.current}`}>
-              <div>
-                <h3>{post.title}</h3>
-              </div>
+    <main className="flex h-screen flex-col items-center justify-center">
+      <Container>
+        {posts.map((post) => (
+          <li key={post._id}>
+            <article>
+              <Link href={`/post/${post.slug.current}`}>
+                <div>
+                  <h3>{post.title}</h3>
+                </div>
 
-              <p>{post.overview}</p>
-            </Link>
-          </article>
-        </li>
-      ))}
+                <p>{post.overview}</p>
+              </Link>
+            </article>
+          </li>
+        ))}
+      </Container>
     </main>
   )
 }
