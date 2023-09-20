@@ -1,5 +1,5 @@
 # Blog build with Sanity CMS and Next JS
-<br><br><br>
+<br><br>
 
 1. Clone this repository to your local machine.
 
