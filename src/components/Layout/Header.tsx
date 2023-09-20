@@ -4,13 +4,11 @@ import Container from '../Shared/Container'
 import Image from 'next/image'
 import Link from 'next/link'
 
-type ExampleProps = HTMLAttributes<HTMLElement>
+type HeaderProps = HTMLAttributes<HTMLElement>
 
-export default function Header({ className }: ExampleProps) {
+export default function Header({ className }: HeaderProps) {
   return (
-    <header
-      className={cn('border-2 border-b-zinc-800 bg-zinc-50 p-5', className)}
-    >
+    <header className={cn('bg-zinc-300  py-5', className)}>
       <Container className="flex justify-between">
         <Link href={'/'}>
           <Image

@@ -6,5 +6,7 @@ type ContainerProps = HTMLAttributes<HTMLDivElement> & {
 }
 
 export default function Container({ children, className }: ContainerProps) {
-  return <div className={cn('container', className)}>{children}</div>
+  return (
+    <div className={cn('container mx-auto px-5', className)}>{children}</div>
+  )
 }

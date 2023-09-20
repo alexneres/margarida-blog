@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header className="absolute flex w-full items-center justify-center" />
+        <Header className="relative flex w-full items-center justify-center" />
         {children}
         <Footer />
       </body>

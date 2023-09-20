@@ -1,7 +1,8 @@
-import { PostType } from '@/app/page'
 import Container from '@/components/Shared/Container'
-import { urlFor } from '@/lib/sanity-image-url'
-import { getPost, getPosts } from '@/services/sanity'
+import { SanityImage } from '@/components/Shared/SanityImage'
+import { urlFor } from '@/services/sanity/config/sanity-image-url'
+import { getPostBySlug, getPosts } from '@/services/sanity/controllers/post'
+import { PostType } from '@/services/sanity/types'
 import { PortableText } from '@portabletext/react'
 import type { Metadata } from 'next'
 import Image from 'next/image'
@@ -11,7 +12,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string }
 }): Promise<Metadata> {
-  const post = (await getPost(params.slug)) as PostType
+  const post = (await getPostBySlug(params.slug)) as PostType
 
   const metadata: Metadata = {
     title: post.title,
@@ -21,7 +22,7 @@ export async function generateMetadata({
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
-  const post = (await getPost(params.slug)) as PostType
+  const post = (await getPostBySlug(params.slug)) as PostType
 
   const PortableTextComponent = {
     types: {
@@ -32,9 +33,11 @@ export default async function Post({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <main className="flex h-screen flex-col items-center justify-center">
-      <Container>
+    <main className="flex flex-col items-center justify-center">
+      <Container className="prose mt-10">
         <h1>{post.title}</h1>
+        <span>{post.excerpt}</span>
+        <SanityImage src={post.coverImage} />
         <PortableText value={post.content} components={PortableTextComponent} />
       </Container>
     </main>
