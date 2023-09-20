@@ -13,7 +13,7 @@ git clone https://github.com/your-username/margarida-blog.git
 cd margarida-blog
 ```
 
-3. Create a .env:
+3. Create a .env file.
 
 ```bash
 NEXT_PUBLIC_SANITY_API_VERSION="2023-08-11"
